@@ -1,0 +1,21 @@
+// fonts
+$primary-text: (
+  color: #666666,
+  font-size: 14px,
+);
+
+// position
+$container:(
+    padding: 0 20px,
+);
+
+.red{
+    background: red !important;
+}
+
+// mixin
+@mixin print-styles($map){
+  @each $property, $value in $map {
+    #{$property}: $value;
+  }
+}
