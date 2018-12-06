@@ -2,6 +2,7 @@ import React from 'react';
 import './_todo.scss'
 
 const todolist =(props)=>{
+    console.log(props)
     const {posts} = props.data
     const list = posts.map((item,index)=>{
         return <div className="wrapper" key={index}>
@@ -15,7 +16,7 @@ const todolist =(props)=>{
             </div>
             <div className="done">
                 <button>Done</button>
-                <button className="red">Remove</button>
+                <button className="red" onClick={props.onDelete}>Remove</button>
             </div>     
         </div>
     })

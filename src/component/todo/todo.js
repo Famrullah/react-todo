@@ -23,13 +23,20 @@ export default class todo extends Component {
         })
     }
 
+    handleDeleteTodo =(index) =>{
+        const task = Object.assign([],this.state.posts);
+        task.splice(index,1)
+        this.setState({posts:task})
+    };
+
     render () {
+        console.log(this.state.posts)
         return (
             <div className="todos">
                 <TodoForm onSubmit={this.addTodo}/>
                 <div className="todos-list">
                     <h3>Todo List</h3>
-                    <List data={this.state}/>
+                    <List data={this.state} onDelete={() => this.handleDeleteTodo(todo.id)}/>
                 </div>
             </div>
         );
