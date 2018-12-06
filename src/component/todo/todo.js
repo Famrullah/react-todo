@@ -23,11 +23,19 @@ export default class todo extends Component {
         })
     }
 
-    handleDeleteTodo =(index) =>{
-        const task = Object.assign([],this.state.posts);
-        task.splice(index,1)
-        this.setState({posts:task})
-    };
+
+
+    remove(e) {
+        var array = [...this.state.posts]; 
+        var index = array.indexOf(e.target.value)
+        array.splice(index, 1);
+        this.setState({posts: array});
+      }
+
+    changeTask=(id,event)=>{
+        let data = this.state.posts.filter(task => task[id] )
+        console.log(data)
+    }
 
     render () {
         console.log(this.state.posts)
@@ -36,7 +44,10 @@ export default class todo extends Component {
                 <TodoForm onSubmit={this.addTodo}/>
                 <div className="todos-list">
                     <h3>Todo List</h3>
-                    <List data={this.state} onDelete={() => this.handleDeleteTodo(todo.id)}/>
+                    <List 
+                    data={this.state} 
+                    onDelete={(e)=>this.remove(e)}
+                    />
                 </div>
             </div>
         );

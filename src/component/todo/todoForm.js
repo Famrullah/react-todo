@@ -116,7 +116,7 @@ export default class todoform extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <FontAwesomeIcon icon="arrow-down" className="icon"/>
-                <button >ORDER</button>
+                <button >add</button>
             </form>
         );
         return (
