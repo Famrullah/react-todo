@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Input from '../ui/input/input'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./_todo.scss"
 
 export default class todoform extends Component {
@@ -19,7 +18,7 @@ export default class todoform extends Component {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        {value: '', displayValue: '-- category --'},
+                        {value: '', displayValue: 'category'},
                         {value: 'React', displayValue: 'React Js'},
                         {value: 'Angular', displayValue: 'Angular'},
                         {value: 'Ember', displayValue: 'Ember'},
@@ -66,7 +65,7 @@ export default class todoform extends Component {
                         elementType: 'select',
                         elementConfig: {
                             options: [
-                                {value: '', displayValue: '-- category --'},
+                                {value: '', displayValue: 'category'},
                                 {value: 'React', displayValue: 'React Js'},
                                 {value: 'Angular', displayValue: 'Angular'},
                                 {value: 'Ember', displayValue: 'Ember'},
@@ -106,22 +105,25 @@ export default class todoform extends Component {
         }
         let form = (
             <form onSubmit={this.orderHandler} >
-                <h1>Add Task</h1>
-                {formElementsArray.map(formElement => (
-                    <Input 
+                <div className="form-container">
+                    {formElementsArray.map(formElement => (
+                        <Input 
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-                ))}
-                <FontAwesomeIcon icon="arrow-down" className="icon"/>
+                    ))}
+                </div>
                 <button >add</button>
             </form>
         );
         return (
             <div className="todos-add">
-                {form}
+                <div className="todos-add__container">
+                    <h1>Add Task</h1>
+                    {form}
+                </div>   
             </div>
         );
     }

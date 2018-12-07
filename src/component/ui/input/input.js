@@ -1,7 +1,9 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const input = ( props ) => {
     let inputElement = null;
+    let icon = null;
 
     switch ( props.elementType ) {
         case ( 'input' ):
@@ -12,6 +14,7 @@ const input = ( props ) => {
                 onChange={props.changed} />;
             break;
         case ( 'select' ):
+            icon = <FontAwesomeIcon icon="arrow-down" className="icon"/>
             inputElement = (
                 <select
                     className="selectElement"
@@ -36,7 +39,7 @@ const input = ( props ) => {
     return (
         <div className='formblock'>
             {inputElement}
-
+            {icon}
         </div>
     );
 
