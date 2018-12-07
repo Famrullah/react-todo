@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import TodoForm from './todoForm'
 import shortid from 'shortid'
 import List from './todo-list'
+import Loading from '../hoc/loading'
 
 import "./_todo.scss"
 
 export default class todo extends Component {
     state = {
         posts:[],
-        loading:true,
+        isLoading:null,
         counter:[]
     }
 
@@ -18,9 +19,13 @@ export default class todo extends Component {
             name:todo.orderData.name,
             category:todo.orderData.category,
         }
-        this.setState({
-            posts:[...this.state.posts,newTodo],
-            loading:false
+        this.setState({isLoading: true}, () => {
+            setTimeout(() => {
+                this.setState({
+                    posts:[...this.state.posts,newTodo],
+                    isLoading:false
+                })     
+              }, 2000) 
         })
     }
 
@@ -39,16 +44,15 @@ export default class todo extends Component {
     }
 
     render () {
-        console.log(this.state.posts)
         return (
             <div className="todos">
                 <TodoForm onSubmit={this.addTodo}/>
                 <div className="todos-list">
                     <h3>Todo List</h3>
-                    <List 
+                    {this.state.isLoading ===true?<Loading/>:<List 
                     data={this.state} 
                     onDelete={(id)=>this.remove(id)}
-                    />
+                    />}
                 </div>
             </div>
         );

@@ -22,12 +22,12 @@
             h1{
                 margin: 10px 0;
             }
-            
+
             form{
                 .form-container{
                     display: grid;
                     grid-template-columns: 2fr 1fr;
-                    grid-gap: 10px;
+                    grid-gap: 20px;
 
                     input{
                         @include print-styles($primary-text);
@@ -50,25 +50,23 @@
                         -o-appearance:none;
                         -ms-appearance:none;
                         appearance: none;
-                        width: 80%;
+                        width: 100%;
                         padding: 10px 30px 10px 10px;
                     }
                 }
 
                 .fa-arrow-down{
-                    position: relative;
-                    left: -20px;
+                    position: absolute;
+                    top: 13px;
+                    right: 10px;
                     font-size: 10px !important;
                     z-index: 1;
-                    pointer-events: none;
-
                 }
         
                 button{
-                    flex-grow: 1;
-                    margin: 15px 25px;
-                    padding: 5px 20px;
                     float: right;
+                    margin-top: 35px;
+                    padding: 7px 50px;
                     border-radius: 5px;
                     background: #00bab2;
                     color: #ffffff;
