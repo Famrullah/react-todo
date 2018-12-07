@@ -8,7 +8,8 @@ import "./_todo.scss"
 export default class todo extends Component {
     state = {
         posts:[],
-        loading:true
+        loading:true,
+        counter:[]
     }
 
     addTodo = todo =>{
@@ -23,14 +24,14 @@ export default class todo extends Component {
         })
     }
 
-
-
-    remove(e) {
-        var array = [...this.state.posts]; 
-        var index = array.indexOf(e.target.value)
-        array.splice(index, 1);
-        this.setState({posts: array});
-      }
+    remove(id) {
+        let data = this.state.posts;
+        let i = data.findIndex(item =>item.id === id)
+        data.splice(i,1)
+        this.setState({
+            posts:data
+        })
+    }
 
     changeTask=(id,event)=>{
         let data = this.state.posts.filter(task => task[id] )
@@ -38,7 +39,6 @@ export default class todo extends Component {
     }
 
     render () {
-        console.log(this.state.posts)
         return (
             <div className="todos">
                 <TodoForm onSubmit={this.addTodo}/>
@@ -46,7 +46,7 @@ export default class todo extends Component {
                     <h3>Todo List</h3>
                     <List 
                     data={this.state} 
-                    onDelete={(e)=>this.remove(e)}
+                    onDelete={(id)=>this.remove(id)}
                     />
                 </div>
             </div>
