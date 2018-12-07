@@ -19,7 +19,7 @@ export default class todo extends Component {
             category:todo.orderData.category,
         }
         this.setState({
-            posts:[newTodo,...this.state.posts],
+            posts:[...this.state.posts,newTodo],
             loading:false
         })
     }
@@ -39,6 +39,7 @@ export default class todo extends Component {
     }
 
     render () {
+        console.log(this.state.posts)
         return (
             <div className="todos">
                 <TodoForm onSubmit={this.addTodo}/>
