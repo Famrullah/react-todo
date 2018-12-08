@@ -88,6 +88,17 @@
             text-align: center;
         }
 
+        .modals{
+            @include print-styles($primary-text);
+            .confirmation{
+                text-align: center;
+                button{
+                    color: #ffffff;
+                    padding: 10px 20px;
+                }
+            }
+        }
+
         .task-list{
             box-sizing: border-box;
             border: 1px solid #ddd;
@@ -102,6 +113,9 @@
                         font-size: 24px;
                     }
                     .category{
+                        span{
+                            font-weight: 600;
+                        }
                         font-size: 12px;
                     }
                 }

@@ -87,14 +87,6 @@ export default class todoform extends Component {
         }
     }
 
-    closeModal =()=>{
-        this.setState({ showModal: false });
-    }
-    
-    showModal =()=>{
-        this.setState({ showModal: false });
-    }
-
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedOrderForm = {
             ...this.state.orderForm
@@ -137,9 +129,6 @@ export default class todoform extends Component {
                 <div className="todos-add__container">
                     <h1>Add Task</h1>
                     {form}
-                    {/* <Modal show={this.state.showModal} modalClosed={this.closeModal}>
-                        <p className="error">please fill out this field ! </p>
-                    </Modal> */}
                 </div>   
             </div>
         );

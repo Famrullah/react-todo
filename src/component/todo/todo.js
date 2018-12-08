@@ -44,20 +44,11 @@ export default class todo extends Component {
         let data = this.state.posts;
         let i = data.findIndex(item =>item.id === id)
         data.splice(i,1)
-        this.setState({showModal:false},()=>{
-            this.setState({
-                posts:data
-            })
-        })
-    }
-
-    confirmationDelete(id){
         this.setState({
-            
+            posts:data
         })
     }
     
-
     update(id,event){
         const taskIndex = this.state.posts.findIndex(p =>{
             return p.id === id
