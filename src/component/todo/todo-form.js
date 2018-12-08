@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Input from '../ui/input/input'
+// import Modal from '../ui/modals/modals'
 import "./_todo.scss"
 
 export default class todoform extends Component {
     state = {
+        showModal:false,
         orderForm: {
             name: {
                 elementType: 'input',
@@ -45,7 +47,11 @@ export default class todoform extends Component {
         }
 
         if(order.orderData.category === "" || order.orderData.name === ""){
-           alert('Please fill out this field !' )
+        //    this.setState({
+        //        showModal:!this.state.showModal
+        //    })
+            alert('please fill out this field ! ')
+           console.log(this.state.showModal)
         }else{
             this.props.onSubmit({
                 orderData:formData
@@ -79,6 +85,14 @@ export default class todoform extends Component {
                 },
             })
         }
+    }
+
+    closeModal =()=>{
+        this.setState({ showModal: false });
+    }
+    
+    showModal =()=>{
+        this.setState({ showModal: false });
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
@@ -123,6 +137,9 @@ export default class todoform extends Component {
                 <div className="todos-add__container">
                     <h1>Add Task</h1>
                     {form}
+                    {/* <Modal show={this.state.showModal} modalClosed={this.closeModal}>
+                        <p className="error">please fill out this field ! </p>
+                    </Modal> */}
                 </div>   
             </div>
         );

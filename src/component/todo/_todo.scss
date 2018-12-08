@@ -91,8 +91,7 @@
         .task-list{
             box-sizing: border-box;
             border: 1px solid #ddd;
-            width: 80%;
-            float: left;
+            width: 100%;
             padding: 10px;
             background: #ffffff;
 
@@ -110,10 +109,7 @@
         }
 
         .done{
-            display: inline-block;
-            padding: 10px;
             margin: 11px 0px;
-            width: 15%;
 
             button{
                 width: 83px;

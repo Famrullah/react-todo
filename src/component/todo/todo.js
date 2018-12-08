@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoForm from './todoForm'
+import TodoForm from './todo-form'
 import shortid from 'shortid'
 import List from './todo-list'
 import Loading from '../hoc/loading'
@@ -10,7 +10,18 @@ export default class todo extends Component {
     state = {
         posts:[],
         isLoading:null,
-        counter:[]
+        complete:[],
+        on:false,
+        current:0,
+        showModal:false
+    }
+
+    closeModal =(id)=>{
+        this.setState({ showModal: false });
+    }
+    
+    showModal =(id)=>{
+        this.setState({ showModal: true });
     }
 
     addTodo = todo =>{
@@ -25,7 +36,7 @@ export default class todo extends Component {
                     posts:[...this.state.posts,newTodo],
                     isLoading:false
                 })     
-              }, 2000) 
+              }, 1000) 
         })
     }
 
@@ -35,6 +46,26 @@ export default class todo extends Component {
         data.splice(i,1)
         this.setState({
             posts:data
+        })
+    }
+
+    confirmationDelete(id){
+        this.setState({
+            
+        })
+    }
+    
+
+    update(id,event){
+        const taskIndex = this.state.posts.findIndex(p =>{
+            return p.id === id
+        })
+        const currentTask = {
+            ...this.state.posts[taskIndex]
+        }
+        console.log(currentTask)
+        this.setState({
+            on:!this.state.on
         })
     }
 
@@ -52,6 +83,9 @@ export default class todo extends Component {
                     {this.state.isLoading ===true?<Loading/>:<List 
                     data={this.state} 
                     onDelete={(id)=>this.remove(id)}
+                    onUpdate={(id)=>this.update(id)}
+                    showModal={(id)=>this.showModal(id)}
+                    modalClosed={(id)=>this.closeModal(id)}
                     />}
                 </div>
             </div>

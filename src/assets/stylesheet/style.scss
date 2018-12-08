@@ -10,11 +10,19 @@ $container:(
 );
 
 .red{
-    background: red !important;
+  background: red !important;
+}
+
+.error{
+  color: red
 }
 
 .formblock{
   position: relative;
+}
+
+.hidden{
+  display: none;
 }
 // mixin
 @mixin print-styles($map){
