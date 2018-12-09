@@ -12,8 +12,8 @@ export default class todo extends Component {
         isLoading:null,
         complete:[],
         on:false,
-        current:0,
-        showModal:false
+        showModal:false,
+        val:''
     }
 
     closeModal =(id)=>{
@@ -21,7 +21,7 @@ export default class todo extends Component {
     }
     
     showModal =(id)=>{
-        this.setState({ showModal: true });
+        this.setState({ showModal: true ,val:id});
     }
 
     addTodo = todo =>{
@@ -40,12 +40,13 @@ export default class todo extends Component {
         })
     }
 
-    remove(id) {
+    remove=(id)=> {
         let data = this.state.posts;
-        let i = data.findIndex(item =>item.id === id)
+        let i = data.findIndex(item =>item.id === this.state.val)
         data.splice(i,1)
         this.setState({
-            posts:data
+            posts:data,
+            showModal:false
         })
     }
     
