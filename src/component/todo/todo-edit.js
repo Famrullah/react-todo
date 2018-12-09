@@ -3,7 +3,7 @@ import Input from '../ui/input/input'
 // import Modal from '../ui/modals/modals'
 import "./_todo.scss"
 
-export default class todoform extends Component {
+export default class todoedit extends Component {
     state = {
         showModal:false,
         orderForm: {
@@ -118,13 +118,13 @@ export default class todoform extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                     ))}
                 </div>
-                <button >add</button>
+                <button >Submit</button>
             </form>
         );
         return (
-            <div className="todos-add">
-                <div className="todos-add__container">
-                    <h1>Add Task</h1>
+            <div className="todos-edit">
+                <div className="todos-edit__container">
+                    <h1>Edit Task</h1>
                     {form}
                 </div>   
             </div>

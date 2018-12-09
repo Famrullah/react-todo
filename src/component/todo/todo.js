@@ -3,6 +3,7 @@ import TodoForm from './todo-form'
 import shortid from 'shortid'
 import List from './todo-list'
 import Loading from '../hoc/loading'
+import TodoEdit from './todo-edit'
 
 import "./_todo.scss"
 
@@ -10,7 +11,6 @@ export default class todo extends Component {
     state = {
         posts:[],
         isLoading:null,
-        complete:[],
         on:false,
         showModal:false,
         val:''
@@ -60,8 +60,19 @@ export default class todo extends Component {
         console.log(currentTask)
         this.setState({
             on:!this.state.on
+        },()=>{
+            if(this.state.on) this.handleScrollToElement()
         })
+
+        
     }
+
+    handleScrollToElement = e => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
+     };
 
     changeTask=(id,event)=>{
         let data = this.state.posts.filter(task => task[id] )
@@ -69,9 +80,14 @@ export default class todo extends Component {
     }
 
     render () {
+        const {on} = this.state
         return (
             <div className="todos">
                 <TodoForm onSubmit={this.addTodo}/>
+                <br/>
+                {on && <div className="todos-edit" ref={elem => (this.gate = elem)}>
+                   <TodoEdit/>
+                </div>}
                 <div className="todos-list">
                     <h3>Todo List</h3>
                     {this.state.isLoading ===true?<Loading/>:<List 

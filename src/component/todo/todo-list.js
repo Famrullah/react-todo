@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '../ui/modals/modals'
+import {Link,withRouter} from 'react-router-dom'
 import './_todo.scss'
 
 const todolist =(props)=>{
@@ -21,7 +22,6 @@ const todolist =(props)=>{
                     <div className="task">
                         <p className="main-task">{item.name}</p>
                         <p className="category"><span>Category :</span>{item.category}</p>
-                        {on && <h1>test</h1>}
                     </div>
                 </div>                   
             </div>
@@ -38,4 +38,4 @@ const todolist =(props)=>{
     )
 }
 
-export default todolist
+export default withRouter(todolist)
