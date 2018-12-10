@@ -1,11 +1,11 @@
 import React from 'react';
 import Modal from '../ui/modals/modals'
-import {Link,withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import './_todo.scss'
 
 const todolist =(props)=>{
 
-    const {posts,on,showModal} = props.data
+    const {posts,showModal} = props.data
     console.log(showModal)
     const list = posts.map((item,index)=>{
         return <div className="wrapper" key={item.id}>
