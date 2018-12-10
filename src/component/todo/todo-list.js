@@ -26,7 +26,6 @@ const todolist =(props)=>{
                 </div>                   
             </div>
             <div className="done">
-                <button onClick={()=>props.onUpdate(item.id)}>Update</button>
                 <button className="red" onClick={()=>props.showModal(item.id)}>Remove</button>
             </div> 
         </div>
